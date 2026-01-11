@@ -1,5 +1,5 @@
 import React from "react";
-import BlogifyInfo from "../../data/aboutBlogify";
+import BlogifyInfo from "../data/aboutBlogify";
 
 function AboutBlogify() {
   return (

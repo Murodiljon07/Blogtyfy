@@ -1,5 +1,5 @@
 import React from "react";
-import latestsPosts from "../../data/latestsPosts";
+import latestsPosts from "../data/latestsPosts";
 
 function LatestPosts() {
   return (

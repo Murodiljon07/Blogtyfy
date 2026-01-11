@@ -1,15 +1,19 @@
-import { useState } from "react";
-import Header from "./components/header/Header";
-import Main from "./components/main_Compo/Main";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+/* pages */
+import HomaPage from "./Pages/HomePage/HomaPage";
+import PostsPage from "./Pages/PostsPage/PostsPage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 
 function App() {
   return (
-    <>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomaPage />} />
+        <Route path="/posts" element={<PostsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
