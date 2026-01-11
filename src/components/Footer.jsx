@@ -13,7 +13,7 @@ function Footer() {
   return (
     <footer className="border-solid border-t-1 ">
       <div className="container py-[5rem] ">
-        <div className="flex justify-between">
+        <div className="flex justify-between align-middle flex-col md:gap-5 md:flex-row">
           <div>
             <Link to="/">
               <img src={Logo} alt="Logo svg" className=" mb-4" />
