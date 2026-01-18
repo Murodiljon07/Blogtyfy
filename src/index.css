@@ -8,6 +8,10 @@
   --bg-color: #e5e7eb;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 .container {
   max-width: 100%;
   width: 1236px;

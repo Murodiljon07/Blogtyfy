@@ -22,14 +22,14 @@ function Header() {
             Discover stories written by amazing people. Share your knowledge and
             inspire others with your unique perspective.
           </p>
-          <div>
-            <Btn children={"Explore Posts -->"} style={"main_btn"}></Btn>
+          <div className="flex gap-4">
+            <Btn children={"Explore Posts ->"} style={"main_btn"}></Btn>
             <Btn children={"Get Started"}></Btn>
           </div>
         </div>
 
         <div>
-          <img src={Hero_img} alt="" />
+          <img src={Hero_img} alt="hero img" className="" />
         </div>
       </section>
     </header>

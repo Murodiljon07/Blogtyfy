@@ -1,18 +1,18 @@
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 /* layouts */
 import Header from "./Layouts/HeaderLayout/Header";
-import PublikLoyaut from "./Layouts/MainLayout/PublikLoyaut";
-import PostsLoyaut from "./Layouts/MainLayout/PostsLoyaut";
+import PublikPage from "./pages/PublikPage";
+import PostsPage from "./pages/PostsPage";
 import Footer from "./Layouts/FooterLayout/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main>
+      <main className="mt-32">
         <Routes>
-          <Route path="/" element={<PublikLoyaut />}></Route>
-          <Route path="/posts" element={<PostsLoyaut />}></Route>
+          <Route path="/" element={<PublikPage />}></Route>
+          <Route path="/posts" element={<PostsPage />}></Route>
         </Routes>
       </main>
       <Footer />
