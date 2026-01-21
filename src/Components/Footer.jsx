@@ -12,7 +12,7 @@ function Footer() {
   return (
     <div className="container ">
       <div className="flex flex-col sm:flex-row justify-between mb-[32px]">
-        <div>
+        <div className="">
           <img src={logo} alt="logo" className="h-[3.4rem]" />
 
           <p className="text-(--color-text) font-[400] text-[1.4rem] max-w-[340px] mt-4">
@@ -21,34 +21,36 @@ function Footer() {
           </p>
         </div>
 
-        <ul className="text-[1.4rem] font-[400] ">
-          <h3 className="text-[2.4rem] text-(--title-color) font-[600]">
-            Quick Links
-          </h3>
-          <li className="hover:text-[1.8rem] text-(--color-text)">
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li className="hover:text-[1.8rem] text-(--color-text)">
-            <Link to={"/posts"}>Posts</Link>
-          </li>
-          <li className="hover:text-[1.8rem] text-(--color-text)">
-            <Link to={"/"}>Login</Link>
-          </li>
-        </ul>
+        <div className="flex mt-[15px] md:mt-[0] gap-[32px]">
+          <ul className="text-[1.4rem] font-[400] w-[280px]">
+            <h3 className="text-[2.4rem] text-(--title-color) font-[600]">
+              Quick Links
+            </h3>
+            <li className="hover:text-[1.8rem] text-(--color-text)">
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li className="hover:text-[1.8rem] text-(--color-text)">
+              <Link to={"/posts"}>Posts</Link>
+            </li>
+            <li className="hover:text-[1.8rem] text-(--color-text)">
+              <Link to={"/"}>Login</Link>
+            </li>
+          </ul>
 
-        <div>
-          <h3 className="text-[2.4rem] text-(--color-title) font-[600]">
-            Connect
-          </h3>
-          <div className="flex gap-[1.2rem] text-[1.6rem]">
-            <div className="connect_box ">
-              <RiTwitterLine size={25} />
-            </div>
-            <div className="connect_box ">
-              <FiGithub size={25} />
-            </div>
-            <div className="connect_box ">
-              <FiLinkedin size={25} />
+          <div className="w-[280px]">
+            <h3 className="text-[2.4rem] text-(--color-title) font-[600]">
+              Connect
+            </h3>
+            <div className="flex gap-[1.2rem] text-[1.6rem]">
+              <div className="connect_box ">
+                <RiTwitterLine size={15} />
+              </div>
+              <div className="connect_box ">
+                <FiGithub size={15} />
+              </div>
+              <div className="connect_box ">
+                <FiLinkedin size={15} />
+              </div>
             </div>
           </div>
         </div>
