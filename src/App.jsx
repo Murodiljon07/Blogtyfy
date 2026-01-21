@@ -1,11 +1,13 @@
 import React from "react";
-import PublikPage from "./Pages/Public/PublikPage";
+
+/* Layouts */
+import PublicLayout from "./layouts/PublicLayout";
 
 function App() {
   return (
-    <>
-      <PublikPage />
-    </>
+    <div>
+      <PublicLayout></PublicLayout>
+    </div>
   );
 }
 
