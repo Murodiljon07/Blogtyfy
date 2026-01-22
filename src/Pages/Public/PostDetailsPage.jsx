@@ -7,7 +7,6 @@ import { BsCalendarEvent } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 
 /* components */
-import RelatedPost from "../../Components/RelatedPost";
 import Posts from "../../Components/Posts";
 
 const BASE_API = import.meta.env.VITE_BASE_API;
@@ -106,7 +105,7 @@ function PostDetailPage() {
         <h4 className="text-[3.6rem] font-bold text-[var(--title-color)] ">
           Related Posts
         </h4>
-        <RelatedPost id={id} />
+        <Posts slice={2} />
       </section>
     </div>
   );
