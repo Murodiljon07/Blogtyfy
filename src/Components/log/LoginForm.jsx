@@ -38,7 +38,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-[80%] max-w-[400px] bg-white p-8 rounded-xl shadow-md flex flex-col items-center mt-20 md:mt-0">
+    <div className="w-full max-w-[400px] bg-white p-8 rounded-xl shadow-md border border-gray-200 flex flex-col items-center mt-20 md:mt-0 p-[32px]">
       <h4 className="text-[30px] font-bold leading-[36px] text-gray-900 text-center mb-2">
         Welcome Back
       </h4>
@@ -47,7 +47,7 @@ function LoginForm() {
       </p>
 
       <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
-        <label className="flex flex-col gap-1 text-[14px] font-medium text-gray-700">
+        <label className="flex flex-col gap-3 text-[14px] font-medium text-gray-700">
           Email
           <input
             type="email"
@@ -59,7 +59,7 @@ function LoginForm() {
           />
         </label>
 
-        <label className="flex flex-col gap-1 text-[14px] font-medium text-gray-700">
+        <label className="flex flex-col gap-3 text-[14px] font-medium text-gray-700">
           Password
           <input
             type="password"
