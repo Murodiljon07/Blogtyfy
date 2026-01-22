@@ -15,7 +15,7 @@ function PublicLayout() {
         <NavBar />
         <div className="h-[6rem] w-full"></div>
       </header>
-      <main>
+      <main className="mb-[64px]">
         <Outlet />
       </main>
       <footer className="py-[4.8rem] px-[3.2rem] border-t border-gray-300">

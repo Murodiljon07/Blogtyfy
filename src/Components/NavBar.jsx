@@ -42,7 +42,7 @@ function NavBar() {
           </li>
           <li>
             <Link to="/">
-              <Btn children="Login" style="main_btn" />
+              <Btn children="Login" style="main_btn" height={"360px"} />
             </Link>
           </li>
         </ul>

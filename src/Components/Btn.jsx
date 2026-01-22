@@ -4,7 +4,7 @@ const Btn_style = {
   main_btn: `
     text-[1.2rem] 
     font-medium 
-    py-2 px-4 
+    py-3 px-5 
     rounded-[12px] 
     bg-[var(--color-primary)] 
     text-white 
