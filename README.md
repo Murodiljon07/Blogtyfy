@@ -31,4 +31,4 @@ Loyiha quyidagi texnologiyalar asosida qurilgan:
 
 1. Repozitoriyani klon qiling:
    ```bash
-   git clone https://github.com/username/blogify.git
+   git clone https://github.com/Murodiljon07/Blogtyfy.git
