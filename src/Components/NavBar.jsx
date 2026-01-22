@@ -41,7 +41,7 @@ function NavBar() {
             <Link to="/posts">Posts</Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/login">
               <Btn children="Login" style="main_btn" height={"360px"} />
             </Link>
           </li>

@@ -1,6 +1,6 @@
 import React from "react";
-
 import { CiCalendarDate } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 function PostCard({ data }) {
   return data.map((post) => {
@@ -8,9 +8,7 @@ function PostCard({ data }) {
 
     return (
       <div
-        key={id}
         className="
-            group
             relative
             bg-white
             border border-gray-200
@@ -65,6 +63,7 @@ function PostCard({ data }) {
         </div>
 
         <div className="p-6">
+          {/* DATE */}
           <span className="text-[14px] leading-[20px] text-gray-500 block mb-2 flex items-center gap-2">
             <CiCalendarDate size={16} /> {created_at.slice(0, 10)}
           </span>
@@ -88,6 +87,22 @@ function PostCard({ data }) {
           <p className="text-[14px] leading-[20px] text-gray-600 line-clamp-3">
             {content}
           </p>
+          <Link
+            to={`/posts/${id}`}
+            className="
+    inline-block
+    mt-4
+    text-[14px]
+    font-medium
+    text-indigo-600
+    hover:text-indigo-500
+    hover:underline
+    transition-colors
+    duration-300
+  "
+          >
+            Read more &rarr;
+          </Link>
         </div>
       </div>
     );

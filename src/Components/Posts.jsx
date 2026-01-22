@@ -29,10 +29,10 @@ function Posts({ slice, search }) {
       }
     }
     get_posts();
-  }, [slice]);
+  }, [false]);
 
   useEffect(() => {
-    if (search.trim() === "") {
+    if (!search || search.trim() === "") {
       setFilteredPosts(posts);
     } else {
       const filtered = posts.filter(

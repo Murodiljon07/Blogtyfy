@@ -5,10 +5,13 @@ import "./index.css";
 
 /* Layouts */
 import PublicLayout from "./Layouts/PublicLayout";
+import AuthLayout from "./Layouts/AuthLayout";
 
 /* pages */
 import HomePage from "./Pages/Public/HomePage";
 import PostsPage from "./Pages/Public/PostsPage";
+import PostDetailsPage from "./Pages/Public/PostDetailsPage";
+import LoginPage from "./Pages/Auth/LoginPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +26,20 @@ function App() {
         {
           path: "/posts",
           element: <PostsPage />,
+        },
+        {
+          path: "/posts:id",
+          element: <PostDetailsPage />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <AuthLayout />,
+      children: [
+        {
+          index: true,
+          element: <LoginPage />,
         },
       ],
     },

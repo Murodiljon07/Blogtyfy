@@ -13,13 +13,13 @@ function ExploreHero({ search, setSearch }) {
       </p>
 
       <div className="flex items-center w-full max-w-[576px] h-[48px] border border-gray-300 rounded-[10px] px-4 bg-white shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 transition-all duration-300">
-        <BiSearchAlt className="text-gray-400 text-2xl mr-2" />
+        <BiSearchAlt className="text-gray-400 text-4xl mr-2" />
         <input
           type="text"
           placeholder="Search posts..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full h-full outline-none text-gray-900 placeholder-gray-400 text-base"
+          className="w-full h-full outline-none text-gray-900 placeholder-gray-400 text-base text-[1.5rem]"
         />
       </div>
     </section>
