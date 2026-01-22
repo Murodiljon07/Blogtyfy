@@ -105,7 +105,7 @@ function PostDetailPage() {
         <h4 className="text-[3.6rem] font-bold text-[var(--title-color)] ">
           Related Posts
         </h4>
-        <Posts slice={2} />
+        <Posts slice={3} />
       </section>
     </div>
   );

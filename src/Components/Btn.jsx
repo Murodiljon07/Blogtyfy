@@ -55,9 +55,14 @@ function Btn({
   onClick,
   width = "w-full",
   height,
+  type,
 }) {
   return (
-    <button className={`${Btn_style[style]} ${width} `} onClick={onClick}>
+    <button
+      type={Btn[type]}
+      className={`${Btn_style[style]} ${width} ${height}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
