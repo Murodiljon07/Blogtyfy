@@ -11,7 +11,9 @@ function LoginPage() {
     <section className="flex flex-col md:flex-row h-screen w-screen">
       <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center bg-white relative">
         <div className=" flex flex-col items-start md:top-10 md:left-10">
-          <img src={logo} alt="logo" className="w-[120px] mb-2" />
+          <Link to={"/"}>
+            <img src={logo} alt="logo" className="w-[120px] mb-2" />
+          </Link>
           <Link
             to="/"
             className="text-[12px] font-medium text-gray-500 hover:text-indigo-600 transition-colors duration-300"
