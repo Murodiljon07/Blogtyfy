@@ -1,0 +1,95 @@
+import React from "react";
+
+function PostCard({ data }) {
+  return data.map((post) => {
+    const { id, category, image, created_at, title, content } = post;
+
+    return (
+      <div
+        key={id}
+        className="
+            group
+            relative
+            bg-white
+            border border-gray-200
+            rounded-2xl
+            shadow-sm
+            transition-all
+            duration-300
+            ease-out
+            hover:-translate-y-2
+            hover:shadow-xl
+            hover:border-gray-300
+            cursor-pointer
+          "
+      >
+        <span
+          className="
+              absolute
+              top-4
+              left-4
+              z-10
+              px-[10px]
+              py-[2px]
+              rounded-full
+              bg-[var(--color-primary)]
+              text-[12px]
+              font-semibold
+              leading-[16px]
+              text-white
+              transition-all
+              duration-300
+              group-hover:bg-white
+              group-hover:text-[var(--color-primary)]
+            "
+        >
+          {category.name}
+        </span>
+
+        <div className="overflow-hidden rounded-t-2xl">
+          <img
+            src={image}
+            alt={title}
+            className="
+                w-full
+                h-[192px]
+                object-cover
+                transition-transform
+                duration-500
+                ease-out
+                group-hover:scale-105
+              "
+          />
+        </div>
+
+        <div className="p-6">
+          <span className="text-[14px] leading-[20px] text-gray-500 block mb-2">
+            {created_at}
+          </span>
+
+          <h4
+            className="
+                font-semibold
+                text-[20px]
+                leading-[28px]
+                tracking-[-0.5px]
+                text-gray-900
+                mb-2
+                transition-colors
+                duration-300
+                group-hover:text-indigo-600
+              "
+          >
+            {title}
+          </h4>
+
+          <p className="text-[14px] leading-[20px] text-gray-600 line-clamp-3">
+            {content}
+          </p>
+        </div>
+      </div>
+    );
+  });
+}
+
+export default PostCard;

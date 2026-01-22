@@ -12,7 +12,12 @@ function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-300">
+    <nav
+      className=" fixed top-0
+      h-[65px] z-50 w-full
+  bg-white/70 backdrop-blur-md
+  border-b border-gray-300"
+    >
       <div className="container flex justify-between items-center py-5">
         <Link to="/">
           <img src={logo} alt="logo" className="h-[3.4rem]" />
@@ -28,7 +33,7 @@ function NavBar() {
           />
         </div>
 
-        <ul className="hidden sm:flex items-center gap-8 text-[1.2rem] font-medium">
+        <ul className="hidden sm:flex items-center gap-8 text-[1.4rem] font-medium">
           <li>
             <Link to="/">Home</Link>
           </li>

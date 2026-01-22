@@ -18,12 +18,28 @@ const Btn_style = {
     cursor-pointer
   `,
   gradient_btn: `
-    py-2 px-4 
+    py-3 px-8.5
     rounded-[12px] 
     bg-gradient-to-r from-[#4346EF] to-[#8524E5] 
     text-white 
     font-medium 
-    text-[16px] 
+    text-[1.6rem] 
+    leading-[24px] 
+    text-center 
+    cursor-pointer 
+    transition-all 
+    duration-300 
+    hover:opacity-90
+  `,
+  bordered_btn: `
+    py-3 px-8.5
+    border-2
+    border-gray-200
+    rounded-[12px] 
+    bg-white
+    text-[#000] 
+    font-medium 
+    text-[1.6rem] 
     leading-[24px] 
     text-center 
     cursor-pointer 
