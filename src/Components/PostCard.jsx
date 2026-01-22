@@ -63,7 +63,6 @@ function PostCard({ data }) {
         </div>
 
         <div className="p-6">
-          {/* DATE */}
           <span className="text-[14px] leading-[20px] text-gray-500 block mb-2 flex items-center gap-2">
             <CiCalendarDate size={16} /> {created_at.slice(0, 10)}
           </span>

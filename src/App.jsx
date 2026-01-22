@@ -28,7 +28,7 @@ function App() {
           element: <PostsPage />,
         },
         {
-          path: "/posts:id",
+          path: "/posts/:id",
           element: <PostDetailsPage />,
         },
       ],

@@ -24,7 +24,7 @@ function HomePage() {
             </p>
           </div>
 
-          <Link to={"/posts"}>
+          <Link to={`/posts}`}>
             <Btn style="bordered_btn" width="130px">
               View All →
             </Btn>

@@ -81,7 +81,7 @@ function LoginForm() {
 
         <p className="text-[14px] font-medium text-gray-500 text-center mt-4">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-indigo-600 hover:underline">
+          <Link to="/" className="text-indigo-600 hover:underline">
             Sign up
           </Link>
         </p>
