@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const BASE_API = "https://alijonov0901.pythonanywhere.com";
+const BASE_API = import.meta.env.VITE_BASE_API;
 
 function PostDetailPage() {
   const { id } = useParams();
@@ -12,7 +12,7 @@ function PostDetailPage() {
     async function getPost() {
       try {
         const res = await fetch(
-          `https://alijonov0901.pythonanywhere.com/api/v1/articles/{id}/`,
+          `https://alijonov0901.pythonanywhere.com/api/v1/articles/${id}/`,
         );
         if (!res.ok) throw new Error("Post topilmadi!");
         const data = await res.json();

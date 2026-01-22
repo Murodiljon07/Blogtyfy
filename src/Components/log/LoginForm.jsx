@@ -14,8 +14,7 @@ function LoginForm() {
 
     try {
       const res = await fetch(
-        `
-    https://alijonov0901.pythonanywhere.com/auth/login/`,
+        `https://alijonov0901.pythonanywhere.com/auth/login/`,
         {
           method: "POST",
           headers: {
