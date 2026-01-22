@@ -33,7 +33,7 @@ function Footer() {
               <Link to={"/posts"}>Posts</Link>
             </li>
             <li className="hover:text-[1.8rem] text-(--color-text)">
-              <Link to={"/"}>Login</Link>
+              <Link to={"/login"}>Login</Link>
             </li>
           </ul>
 
