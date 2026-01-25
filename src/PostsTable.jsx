@@ -1,15 +1,19 @@
+import React from "react";
+
+/* components */
+import Btn from "./Components/Btn";
+
 function PostsTable({ posts }) {
   const tableHeads = ["Title", "Category", "Date", "Status", "Actions"];
 
   return (
-    <table className="w-full border-collapse font-inter">
+    <table className="w-full border-collapse">
       <thead>
         <tr>
           {tableHeads.map((item, index) => (
             <th
               key={index}
-              className="pl-[16px] py-[12px] text-left
-                         font-medium text-[16px] leading-[24px]"
+              className="text-[14px] text-(--color-text) pl-[16px] py-[12px] font-medium text-left"
             >
               {item}
             </th>
@@ -22,30 +26,36 @@ function PostsTable({ posts }) {
           const { title, category, created_at, is_active } = item;
 
           return (
-            <tr key={index} className="border-t border-gray-300">
-              <td className="p-[17px] text-[14px] leading-[20px]">{title}</td>
-
-              <td className="p-[17px] text-[14px] leading-[20px]">
-                {category.name}
+            <tr key={index} className="border-t border-gray-300 text-[14px]">
+              <td className="p-[17px] text-(-color-title) text-[16px] font-medium">
+                {title}
               </td>
-
-              <td className="p-[17px] text-[14px] leading-[20px]">
+              <td className="p-[17px] ">
+                <p className="text-[12px] text-(--color-primary) bg-[#4346EF1A]  py-[4px] px-[8px] rounded-[10px] w-[40%]">
+                  {category.name}
+                </p>
+              </td>
+              <td className="p-[17px] text-(--color-text)">
                 {created_at.slice(0, 10)}
               </td>
-
-              <td className="p-[17px] align-middle">
-                <span
-                  className={`inline-block w-[10px] h-[10px] rounded-full ${
-                    is_active ? "bg-primary" : "bg-danger"
-                  }`}
-                />
+              <td className="p-[17px] ">
+                {
+                  <div
+                    className={`${is_active ? "bg-green-600" : "bg-red-700"} w-[10px] h-[10px] rounded-[50%] `}
+                  ></div>
+                }
               </td>
-
-              <td className="p-[17px]">
-                <div className="flex gap-2">
-                  <Btn>Edit</Btn>
-                  <Btn>Delete</Btn>
-                </div>
+              <td className="p-[17px] flex gap-[12px] ">
+                <Btn
+                  children={"Edit"}
+                  width="fit-content"
+                  style={"text-[#4346EF]"}
+                />
+                <Btn
+                  children={"Delete"}
+                  width="fit-content"
+                  style={"text-[#EF4343]"}
+                />
               </td>
             </tr>
           );
@@ -54,3 +64,5 @@ function PostsTable({ posts }) {
     </table>
   );
 }
+
+export default PostsTable;

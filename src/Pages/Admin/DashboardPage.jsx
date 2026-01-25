@@ -54,10 +54,14 @@ function DashboardPage() {
         </div>
       </section>
 
-      <section className="p-[24px] border border-gray-300 rounded-[12px]">
+      <section className="p-[24px] border border-[#E5E7EB] rounded-[12px]">
         <div className="mb-[24px]">
-          <h3>Recent Posts</h3>
-          <p>Manage and monitor your latest content</p>
+          <h3 className="text-[20px] font-[600] text-(--color-title)">
+            Recent Posts
+          </h3>
+          <p className="text-[14px] font-[400] text-(--color-text)">
+            Manage and monitor your latest content
+          </p>
         </div>
         <PostsTable posts={posts} />
       </section>

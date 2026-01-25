@@ -53,7 +53,7 @@ function Btn({ children, style, onClick, width = "w-full", height, type }) {
   return (
     <button
       type={type}
-      className={`${Btn_style[style]} ${width} ${height} ${style}`}
+      className={`${Btn_style[style]} ${width} ${height} ${style} cursor-pointer`}
       onClick={onClick}
     >
       {children}

@@ -2,6 +2,7 @@ import React from "react";
 import { GrDocumentText } from "react-icons/gr";
 import { PiChartLineUpLight } from "react-icons/pi";
 import { FiUsers } from "react-icons/fi";
+import { FaDatabase } from "react-icons/fa6";
 
 function IndexCard({ totalPosts, category }) {
   let cardInfoType = [
@@ -12,21 +13,21 @@ function IndexCard({ totalPosts, category }) {
       index: totalPosts,
     },
     {
-      icon: <GrDocumentText color="#8524E5" />,
+      icon: <FaDatabase color="#8524E5" />,
       degree: "+2%",
-      title: "Total Posts",
+      title: "Categories",
       index: category,
     },
     {
       icon: <PiChartLineUpLight color="#21C45D" />,
       degree: "+23%",
-      title: "Total Posts",
+      title: "Total Views",
       index: "12.5K",
     },
     {
       icon: <FiUsers color="#4346EF" />,
       degree: "+8%",
-      title: "Total Posts",
+      title: "Active Users",
       index: "1.2K",
     },
   ];
