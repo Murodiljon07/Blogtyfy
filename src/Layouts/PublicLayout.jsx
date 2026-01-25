@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Outlet } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 /* components */
 import NavBar from "../Components/NavBar";
@@ -10,7 +9,6 @@ import Footer from "../Components/Footer";
 function PublicLayout() {
   return (
     <>
-      <ToastContainer />
       <header>
         <NavBar />
         <div className="h-[6rem] w-full"></div>

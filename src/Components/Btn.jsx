@@ -60,7 +60,7 @@ function Btn({
   return (
     <button
       type={Btn[type]}
-      className={`${Btn_style[style]} ${width} ${height}`}
+      className={`${Btn_style[style]} ${width} ${height} ${style}`}
       onClick={onClick}
     >
       {children}

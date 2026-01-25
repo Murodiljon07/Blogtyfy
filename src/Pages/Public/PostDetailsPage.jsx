@@ -15,8 +15,6 @@ function PostDetailPage() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
 
-  console.log(post);
-
   useEffect(() => {
     async function getPost() {
       try {

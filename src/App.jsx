@@ -1,17 +1,23 @@
 import React from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import "./index.css";
 
 /* Layouts */
 import PublicLayout from "./Layouts/PublicLayout";
 import AuthLayout from "./Layouts/AuthLayout";
+import AdminLayout from "./Layouts/AdminLayout";
 
 /* pages */
 import HomePage from "./Pages/Public/HomePage";
 import PostsPage from "./Pages/Public/PostsPage";
 import PostDetailsPage from "./Pages/Public/PostDetailsPage";
 import LoginPage from "./Pages/Auth/LoginPage";
+import DashboardPage from "./Pages/Admin/DashboardPage";
+import CreatePostPage from "./Pages/Admin/CreatePostPage";
+import AdminPostsPage from "./Pages/Admin/AdminPostsPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,11 +30,11 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: "/posts",
+          path: "posts",
           element: <PostsPage />,
         },
         {
-          path: "/posts/:id",
+          path: "posts/:id",
           element: <PostDetailsPage />,
         },
       ],
@@ -43,9 +49,31 @@ function App() {
         },
       ],
     },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "dashboard",
+          element: <DashboardPage />,
+        },
+        {
+          path: "adminPosts",
+          element: <AdminPostsPage />,
+        },
+        {
+          path: "createPosts",
+          element: <CreatePostPage />,
+        },
+      ],
+    },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} /> <ToastContainer />
+    </>
+  );
 }
 
 export default App;

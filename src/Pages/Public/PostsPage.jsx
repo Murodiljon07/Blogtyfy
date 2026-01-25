@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Posts from "../../Components/Posts";
 import ExploreHero from "../../Components/ExploreHero";
+import SetCategory from "../../Components/SetCategory";
 
 function PostsPage() {
   const [search, setSearch] = useState("");
@@ -12,6 +13,7 @@ function PostsPage() {
       </div>
 
       <div className="container">
+        <SetCategory />
         <Posts search={search} />
       </div>
     </>

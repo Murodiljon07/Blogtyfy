@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Btn from "../../Components/Btn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const BASE_API = import.meta.env.VITE_BASE_API;
@@ -8,6 +8,7 @@ const BASE_API = import.meta.env.VITE_BASE_API;
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +28,10 @@ function LoginForm() {
       const data = await res.json();
 
       if (res.status === 200 || res.status === 201) {
-        toast("Muvoffaqiyatli kirildi!");
+        navigate("/admin/dashboard");
+        toast.success("Muvoffaqiyatli kirildi!");
       } else {
-        toast(data.message || "kirishga ruxsat berilmadi!");
+        toast.error(data.message || "kirishga ruxsat berilmadi!");
       }
     } catch (err) {
       toast.error("Server bilan bog‘lanishda xatolik!");
