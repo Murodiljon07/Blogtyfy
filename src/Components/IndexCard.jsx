@@ -6,28 +6,28 @@ import { FiUsers } from "react-icons/fi";
 function IndexCard({ totalPosts, category }) {
   let cardInfoType = [
     {
-      icon: <GrDocumentText />,
-      degree: "12%",
+      icon: <GrDocumentText color="#4346EF" />,
+      degree: "+12%",
       title: "Total Posts",
       index: totalPosts,
     },
     {
-      icon: <GrDocumentText />,
-      degree: "12%",
+      icon: <GrDocumentText color="#8524E5" />,
+      degree: "+2%",
       title: "Total Posts",
-      index: totalPosts,
+      index: category,
     },
     {
-      icon: <PiChartLineUpLight />,
-      degree: "12%",
+      icon: <PiChartLineUpLight color="#21C45D" />,
+      degree: "+23%",
       title: "Total Posts",
-      index: totalPosts,
+      index: "12.5K",
     },
     {
-      icon: <FiUsers />,
-      degree: "12%",
+      icon: <FiUsers color="#4346EF" />,
+      degree: "+8%",
       title: "Total Posts",
-      index: totalPosts,
+      index: "1.2K",
     },
   ];
 
@@ -36,15 +36,17 @@ function IndexCard({ totalPosts, category }) {
     return (
       <div className="border border-gray-300 rounded-[12px] w-[302px] h-[170px] p-[25px]">
         <div className="flex w-full justify-between items-center">
-          <div className="h-[48px] w-[48px] text-[20px] bg-[#4346EF1A] flex items-center justify-center rounded-[12px]">
+          <div className="h-[48px] w-[48px] text-[20px] bg-[#4346EF1A] flex items-center justify-center rounded-[12px] mb-[12px]">
             {icon}
           </div>
           <span className="text-[12px] font-medium text-green-600">
             {degree}
           </span>
         </div>
-        <h4>{index}</h4>
-        <p>{title}</p>
+        <h4 className="text-[24px] font-[700] text-(--color-title) mb-[4px]">
+          {index}
+        </h4>
+        <p className="text-[14px] text-(--color-text) font-[400]">{title}</p>
       </div>
     );
   });

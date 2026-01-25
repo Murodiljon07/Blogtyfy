@@ -4,30 +4,33 @@ import { toast } from "react-toastify";
 
 /* components */
 import IndexCard from "../../Components/IndexCard";
+import PostsTable from "../../PostsTable";
 
 function DashboardPage() {
   let [posts, setPosts] = useState([]);
 
-  // useEffect(() => {
-  //   async function get_posts() {
-  //     try {
-  //       const res = await fetch(
-  //         `https://alijonov0901.pythonanywhere.com/api/v1/articles/`,
-  //       );
-  //       if (!res.ok) {
-  //         throw new Error("API da xatolik!");
-  //       } else {
-  //         toast.success("Ma'lumotlar qabul qilindi");
-  //       }
-  //       const data = await res.json();
+  useEffect(() => {
+    async function get_posts() {
+      try {
+        const res = await fetch(
+          `https://alijonov0901.pythonanywhere.com/api/v1/articles/`,
+        );
+        if (!res.ok) {
+          throw new Error("API da xatolik!");
+        } else {
+          toast.success("Ma'lumotlar qabul qilindi");
+        }
+        const data = await res.json();
 
-  //       setPosts(data);
-  //     } catch (error) {
-  //       toast.error(error.message);
-  //     }
-  //   }
-  //   get_posts();
-  // }, [false]);
+        setPosts(data);
+      } catch (error) {
+        toast.error(error.message);
+      }
+    }
+    get_posts();
+  }, [false]);
+
+  console.log(posts);
 
   let category = posts.reduce((accumlator, item) => {
     let { category } = item;
@@ -39,7 +42,7 @@ function DashboardPage() {
 
   return (
     <>
-      <section>
+      <section className="mb-[32px]">
         <h2 className="text-[32px] text-(--color-title) font-bold">
           Dashboard
         </h2>
@@ -47,8 +50,16 @@ function DashboardPage() {
           Welcome back! Here's an overview of your blog.
         </p>
         <div className="mt-[32px] flex gap-[24px]">
-          <IndexCard totalPosts={posts} category={category} />
+          <IndexCard totalPosts={posts.length} category={category.length} />
         </div>
+      </section>
+
+      <section className="p-[24px] border border-gray-300 rounded-[12px]">
+        <div className="mb-[24px]">
+          <h3>Recent Posts</h3>
+          <p>Manage and monitor your latest content</p>
+        </div>
+        <PostsTable posts={posts} />
       </section>
     </>
   );

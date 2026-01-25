@@ -49,17 +49,10 @@ const Btn_style = {
   `,
 };
 
-function Btn({
-  children,
-  style = "main_btn",
-  onClick,
-  width = "w-full",
-  height,
-  type,
-}) {
+function Btn({ children, style, onClick, width = "w-full", height, type }) {
   return (
     <button
-      type={Btn[type]}
+      type={type}
       className={`${Btn_style[style]} ${width} ${height} ${style}`}
       onClick={onClick}
     >
