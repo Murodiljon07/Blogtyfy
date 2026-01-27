@@ -57,6 +57,7 @@ function AdminBar() {
       </div>
       <div className="p-4 border-t border-gray-300 w-full flex items-center justify-center">
         <NavLink
+          onClick={() => localStorage.clear()}
           to={"/login"}
           className={
             "py-3 px-4 text-[14px] rounded-[12px]  font-medium flex items-center gap-3 h-[44px] h-[20px] hover:text-(--color-primary) "

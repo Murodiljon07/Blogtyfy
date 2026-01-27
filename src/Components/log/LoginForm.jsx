@@ -29,6 +29,7 @@ function LoginForm() {
 
       if (res.status === 200 || res.status === 201) {
         navigate("/admin/dashboard");
+        localStorage.setItem("token", JSON.stringify(data));
         toast.success("Muvoffaqiyatli kirildi!");
       } else {
         toast.error(data.message || "kirishga ruxsat berilmadi!");

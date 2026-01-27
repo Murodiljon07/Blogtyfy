@@ -1,6 +1,7 @@
 import React from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { ToastContainer } from "react-toastify";
 
 import "./index.css";
@@ -18,6 +19,9 @@ import LoginPage from "./Pages/Auth/LoginPage";
 import DashboardPage from "./Pages/Admin/DashboardPage";
 import CreatePostPage from "./Pages/Admin/CreatePostPage";
 import AdminPostsPage from "./Pages/Admin/AdminPostsPage";
+
+/* components */
+import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,7 +55,11 @@ function App() {
     },
     {
       path: "/admin",
-      element: <AdminLayout />,
+      element: (
+        <ProtectedRoute>
+          <AdminLayout />
+        </ProtectedRoute>
+      ),
       children: [
         {
           path: "dashboard",
