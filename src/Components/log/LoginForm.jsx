@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const BASE_API = import.meta.env.VITE_BASE_API;
 
 function LoginForm() {
+  const { loading, setLoading } = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -37,6 +38,8 @@ function LoginForm() {
     } catch (err) {
       toast.error("Server bilan bog‘lanishda xatolik!");
       console.error(err);
+    } finally {
+      setLogin(true);
     }
   };
 
@@ -74,12 +77,22 @@ function LoginForm() {
           />
         </label>
 
-        <Btn
+        {/* <Btn
           type="submit"
           children={"Login"}
           style="main_btn"
           className="mt-4 w-full"
-        />
+          onClick={login}
+        /> */}
+        <button
+          type="submit"
+          disabled={loading}
+          className={`text-white cursor-pointer rounded-2xl w-full py-3 bg-[#4346EF] flex justify-center items-center ${
+            loading ? "opacity-70" : ""
+          }`}
+        >
+          {loading ? "enter" : "Login"}
+        </button>
 
         <p className="text-[14px] font-medium text-gray-500 text-center mt-4">
           Don't have an account?{" "}

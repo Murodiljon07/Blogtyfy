@@ -9,18 +9,9 @@ function PostCard({ data }) {
     return (
       <div
         className="
+            group border-gray-300 rounded-2xl duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl
             relative
-            bg-white
-            border border-gray-200
-            rounded-2xl
-            shadow-sm
-            transition-all
-            duration-300
-            ease-out
-            hover:-translate-y-2
-            hover:shadow-xl
-            hover:border-gray-300
-            cursor-pointer
+         
           "
       >
         <span
@@ -46,7 +37,7 @@ function PostCard({ data }) {
           {category.name}
         </span>
 
-        <div className="overflow-hidden rounded-t-2xl">
+        <div className="overflow-hidden rounded-t-2xl ">
           <img
             src={image}
             alt={title}
@@ -58,6 +49,7 @@ function PostCard({ data }) {
                 duration-500
                 ease-out
                 group-hover:scale-105
+                
               "
           />
         </div>
@@ -98,9 +90,10 @@ function PostCard({ data }) {
     hover:underline
     transition-colors
     duration-300
+    group-hover:gap-3
   "
           >
-            Read more &rarr;
+            Read more Next &copy;
           </Link>
         </div>
       </div>
