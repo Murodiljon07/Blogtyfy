@@ -93,7 +93,7 @@ function PostCard({ data }) {
     group-hover:gap-3
   "
           >
-            Read more Next &copy;
+            Read more
           </Link>
         </div>
       </div>

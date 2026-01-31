@@ -6,10 +6,18 @@ import { toast } from "react-toastify";
 const BASE_API = import.meta.env.VITE_BASE_API;
 
 function LoginForm() {
-  const { loading, setLoading } = useState(false);
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const token_time = () => {
+    setTimeout(() => {
+      localStorage.clear();
+      toast.warning("Token vaqti tugadi");
+      navigate("/login");
+    }, 10000);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,9 +37,10 @@ function LoginForm() {
       const data = await res.json();
 
       if (res.status === 200 || res.status === 201) {
-        navigate("/admin/dashboard");
         localStorage.setItem("token", JSON.stringify(data));
+        navigate("/admin/dashboard");
         toast.success("Muvoffaqiyatli kirildi!");
+        // token_time();
       } else {
         toast.error(data.message || "kirishga ruxsat berilmadi!");
       }
@@ -39,7 +48,7 @@ function LoginForm() {
       toast.error("Server bilan bog‘lanishda xatolik!");
       console.error(err);
     } finally {
-      setLogin(true);
+      setLoading(true);
     }
   };
 
@@ -60,7 +69,7 @@ function LoginForm() {
             placeholder="name@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border border-gray-300 rounded-lg p-3 text-[16px] font-normal text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
+            className="border border-gray-300 flex items-center justify-center rounded-lg p-3 text-[16px] font-normal text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
             required
           />
         </label>
@@ -72,27 +81,17 @@ function LoginForm() {
             placeholder="********"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border border-gray-300 rounded-lg p-3 text-[16px] font-normal text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
+            className="border border-gray-300 flex items-center justify-center  rounded-lg p-3 text-[16px] font-normal text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
             required
           />
         </label>
 
-        {/* <Btn
+        <Btn
           type="submit"
-          children={"Login"}
+          children={loading ? "Loading..." : "Login"}
           style="main_btn"
           className="mt-4 w-full"
-          onClick={login}
-        /> */}
-        <button
-          type="submit"
-          disabled={loading}
-          className={`text-white cursor-pointer rounded-2xl w-full py-3 bg-[#4346EF] flex justify-center items-center ${
-            loading ? "opacity-70" : ""
-          }`}
-        >
-          {loading ? "enter" : "Login"}
-        </button>
+        />
 
         <p className="text-[14px] font-medium text-gray-500 text-center mt-4">
           Don't have an account?{" "}
