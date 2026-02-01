@@ -1,27 +1,27 @@
 import React from "react";
 import Btn from "../../Components/Btn";
-import { useState } from "react";
+import { useRef } from "react";
 /* icons */
 import { MdOutlineFileUpload } from "react-icons/md";
 import { FcApproval } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 function CreatePostPage() {
-  const token = localStorage.getItem("token");
+  const token = JSON.parse(localStorage.getItem("token"));
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [category, setCategory] = useState("Technology");
-  const [image, setImage] = useState(null);
+  const titleRef = useRef();
+  const contentRef = useRef();
+  const categoryRef = useRef();
+  const imageRef = useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("1", title);
-    formData.append("2", content);
-    formData.append("3", category);
-    formData.append("4", image);
+    formData.append("title", titleRef.current.value);
+    formData.append("content", contentRef.current.value);
+    formData.append("category", categoryRef.current.value);
+    formData.append("image", imageRef.current.files[0]);
 
     async function publishPost() {
       try {
@@ -37,14 +37,18 @@ function CreatePostPage() {
           },
         );
 
+        let data = await res.json();
+
+        console.log(data);
+
         if (!res.ok) {
           throw new Error("Server bilan muammo!");
         }
 
         toast.success("Post Published");
       } catch (error) {
+        toast.error(error.message);
         console.log(error);
-        toast(error);
       }
     }
     publishPost();
@@ -61,13 +65,14 @@ function CreatePostPage() {
         </p>
       </div>
 
-      <form className="flex gap-[32px]">
+      <form className="flex gap-[32px]" onSubmit={handleSubmit}>
         <div className="bg-white w-[589.33px] h-[570px] p-[24px] rounded-[12px] shadow-sm space-y-[24px]">
           <div>
             <label className="mb-[8px] block text-[14px] leading-[14px] font-[500] text-[#374151]">
               Post Title
             </label>
             <input
+              ref={titleRef}
               type="text"
               placeholder="Enter post title..."
               className="
@@ -83,7 +88,6 @@ function CreatePostPage() {
                 focus:outline-none focus:ring-2 focus:ring-[#3B82F6]
               "
               required
-              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
@@ -92,6 +96,7 @@ function CreatePostPage() {
               Content
             </label>
             <textarea
+              ref={contentRef}
               placeholder="Write your post content..."
               className="
                 w-[539.33px] h-[400px]
@@ -105,7 +110,6 @@ function CreatePostPage() {
                 focus:outline-none focus:ring-2 focus:ring-[#3B82F6]
               "
               required
-              onChange={(e) => setContent(e.target.value)}
             />
           </div>
         </div>
@@ -121,6 +125,7 @@ function CreatePostPage() {
             </label>
 
             <select
+              ref={categoryRef}
               className="
                 w-full h-[40px]
                 rounded-[10px]
@@ -129,13 +134,12 @@ function CreatePostPage() {
                 text-[14px] leading-[14px] font-[500] text-[#111827]
                 focus:outline-none focus:ring-2 focus:ring-[#3B82F6]
               "
-              onChange={(e) => setCategory(e.target.value)}
             >
-              <option>Technology</option>
-              <option>Productivity</option>
-              <option>Design</option>
-              <option>Business</option>
-              <option>Lifestyle</option>
+              <option value={1}>Technology</option>
+              <option value={2}>Productivity</option>
+              <option value={3}>Design</option>
+              <option value={4}>Business</option>
+              <option value={5}>Lifestyle</option>
             </select>
           </div>
 
@@ -158,21 +162,18 @@ function CreatePostPage() {
       transition
     "
             >
-              {image ? (
+              {imageRef.current?.files?.length ? (
                 <FcApproval size={32} />
               ) : (
                 <MdOutlineFileUpload size={32} />
               )}
+
               <span className="mt-[8px] text-center">
                 Click to upload or drag and <br /> drop <br />
                 PNG, JPG or WEBP
               </span>
 
-              <input
-                type="file"
-                className="hidden"
-                onChange={(e) => setImage(e.target.files[0])}
-              />
+              <input ref={imageRef} type="file" className="hidden" />
             </label>
           </div>
 
@@ -182,7 +183,6 @@ function CreatePostPage() {
               width="w-[171.66px]"
               height="h-[44px]"
               type="submit"
-              onClick={handleSubmit}
             >
               Publish Post
             </Btn>
