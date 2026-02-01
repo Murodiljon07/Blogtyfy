@@ -37,10 +37,6 @@ function CreatePostPage() {
           },
         );
 
-        let data = await res.json();
-
-        console.log(data);
-
         if (!res.ok) {
           throw new Error("Server bilan muammo!");
         }
@@ -162,7 +158,7 @@ function CreatePostPage() {
       transition
     "
             >
-              {imageRef.current?.files?.length ? (
+              {imageRef.length ? (
                 <FcApproval size={32} />
               ) : (
                 <MdOutlineFileUpload size={32} />

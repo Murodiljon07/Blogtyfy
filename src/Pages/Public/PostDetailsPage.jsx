@@ -52,9 +52,7 @@ function PostDetailPage() {
           <h1 className="text-[36px] font-bold leading-[44px] mt-2 mb-4">
             {post.title}
           </h1>
-          <p className="text-[16px] leading-[28px] text-gray-600 mb-6">
-            {post.content}
-          </p>
+
           <div className="flex items-center gap-[8px]">
             <CiUser size={18} />
             <p className="text-[14px] text-gray-400">{post.author.email}</p>
@@ -69,34 +67,10 @@ function PostDetailPage() {
           alt={post.title}
           className="w-full h-[400px] object-cover rounded-b-[32px] mb-[32px] "
         />
-        <h1 className="text-[3.6rem] font-[600] ">Lorem, ipsum dolor.</h1>
-        <p className="text-[1.8rem]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-          voluptatem aliquam tempore consequuntur placeat porro voluptates qui
-          labore, adipisci laboriosam asperiores suscipit neque optio ex minima
-          voluptas est maxime ipsum.
-        </p>
-        <h1 className="text-[3.6rem] font-[600] ">Suscipit neque optio </h1>
-        <p className="text-[1.8rem]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-          voluptatem aliquam tempore consequuntur placeat porro voluptates qui
-          labore, adipisci laboriosam asperiores suscipit neque optio ex minima
-          voluptas est maxime ipsum.
-        </p>
-        <h1 className="text-[3.6rem] font-[600] ">Adipisicing elit</h1>
-        <p className="text-[1.8rem]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-          voluptatem aliquam tempore consequuntur placeat porro voluptates qui
-          labore, adipisci laboriosam asperiores suscipit neque optio ex minima
-          voluptas est maxime ipsum.
-        </p>
-        <h1 className="text-[3.6rem] font-[600] ">Voluptatem aliquam</h1>
-        <p className="text-[1.8rem]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-          voluptatem aliquam tempore consequuntur placeat porro voluptates qui
-          labore, adipisci laboriosam asperiores suscipit neque optio ex minima
-          voluptas est maxime ipsum.
-        </p>
+        <h1 className="text-[3.6rem] font-[600] "></h1>
+        <pre className="text-[16px] leading-[28px] text-gray-600 mb-6">
+          {post.content}
+        </pre>
       </div>
 
       <section className="my-[64px] px-[32px]">

@@ -1,10 +1,35 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 /* components */
 import Btn from "./Components/Btn";
 
+/* API */
+const BASE_API = import.meta.env.VITE_BASE_API;
+
 function PostsTable({ posts }) {
   const tableHeads = ["Title", "Category", "Date", "Status", "Actions"];
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  async function deletePost(id) {
+    try {
+      let res = await fetch(
+        `https://alijonov0901.pythonanywhere.com/api/v1/articles/${id}/`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token.access}`,
+          },
+        },
+      );
+
+      if (!res.ok) {
+        throw new Error("Bat request");
+      }
+    } catch (error) {
+      toast.warning(error.message);
+    }
+  }
 
   return (
     <table className="w-full border-collapse">
@@ -23,11 +48,11 @@ function PostsTable({ posts }) {
 
       <tbody className="block max-h-[300px] overflow-y-auto">
         {posts.map((item, index) => {
-          const { title, category, created_at, is_active } = item;
+          const { id, title, category, created_at, is_active } = item;
 
           return (
             <tr
-              key={index}
+              key={id}
               className="table w-full table-fixed border-t border-gray-300 text-[14px]"
             >
               <td className="p-[17px] text-(-color-title) text-[16px] font-medium">
@@ -59,9 +84,10 @@ function PostsTable({ posts }) {
                   style="text-[#4346EF]"
                 />
                 <Btn
+                  onClick={() => deletePost(id)}
                   children="Delete"
                   width="fit-content"
-                  style="text-[#EF4343]"
+                  style="text-[#EF4343] hover:underline"
                 />
               </td>
             </tr>
