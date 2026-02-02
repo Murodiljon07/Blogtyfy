@@ -1,5 +1,6 @@
 import React from "react";
 import { CiCalendarDate } from "react-icons/ci";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function PostCard({ data }) {
@@ -93,7 +94,7 @@ function PostCard({ data }) {
     group-hover:gap-3
   "
           >
-            Read more
+            Read more →
           </Link>
         </div>
       </div>

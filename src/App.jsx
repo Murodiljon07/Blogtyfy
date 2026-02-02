@@ -19,6 +19,7 @@ import LoginPage from "./Pages/Auth/LoginPage";
 import DashboardPage from "./Pages/Admin/DashboardPage";
 import CreatePostPage from "./Pages/Admin/CreatePostPage";
 import AdminPostsPage from "./Pages/Admin/AdminPostsPage";
+import EditPage from "./Pages/Admin/EditPost";
 
 /* components */
 import ProtectedRoute from "./Pages/Auth/ProtectedRoute";
@@ -72,6 +73,10 @@ function App() {
         {
           path: "createPosts",
           element: <CreatePostPage />,
+        },
+        {
+          path: "editPost/:id",
+          element: <EditPage />,
         },
       ],
     },

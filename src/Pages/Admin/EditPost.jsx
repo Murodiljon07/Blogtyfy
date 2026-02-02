@@ -1,18 +1,51 @@
-import React from "react";
-import Btn from "../../Components/Btn";
-import { useRef } from "react";
-/* icons */
-import { MdOutlineFileUpload } from "react-icons/md";
-import { FcApproval } from "react-icons/fc";
+import { useParams, useNavigate } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
+
 import { toast } from "react-toastify";
 
-function CreatePostPage() {
-  const token = JSON.parse(localStorage.getItem("token"));
+/* icons */
+import { MdOutlineFileUpload } from "react-icons/md";
+import Btn from "../../Components/Btn";
+let Base = import.meta.env.VITE_BASE_URL;
 
-  const titleRef = useRef();
-  const contentRef = useRef();
-  const categoryRef = useRef();
-  const imageRef = useRef();
+function EditPage() {
+  let { id } = useParams();
+  let navigate = useNavigate();
+
+  let token = JSON.parse(localStorage.getItem("token"));
+
+  let titleRef = useRef();
+  let contentRef = useRef();
+  let categoryRef = useRef();
+  let isActiveRef = useRef();
+  let [isActive, setIsActive] = useState(false);
+  let imageRef = useRef();
+
+  useEffect(() => {
+    async function getPostByID() {
+      try {
+        let res = await fetch(
+          `https://alijonov0901.pythonanywhere.com/api/v1/articles/${id.slice(1)}/`,
+        );
+
+        if (!res.ok) {
+          throw new Error("Ma'lumot olishda xatolik");
+        }
+
+        let data = await res.json();
+
+        console.log(data);
+
+        titleRef.current.value = data.title;
+        contentRef.current.value = data.content;
+        setIsActive(data.is_active);
+        categoryRef.current.value = data.category.id;
+      } catch (error) {
+        toast(error);
+      }
+    }
+    getPostByID();
+  }, [id]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,13 +56,12 @@ function CreatePostPage() {
     formData.append("category", categoryRef.current.value);
     formData.append("image", imageRef.current.files[0]);
 
-    async function publishPost() {
+    async function updatedPost() {
       try {
         let res = await fetch(
-          "https://alijonov0901.pythonanywhere.com/api/v1/articles/",
-
+          `https://alijonov0901.pythonanywhere.com/api/v1/articles/${id.slice(1)}/`,
           {
-            method: "POST",
+            method: "PUT",
             headers: {
               Authorization: `Bearer ${token.access}`,
             },
@@ -38,31 +70,26 @@ function CreatePostPage() {
         );
 
         if (!res.ok) {
-          throw new Error("Server bilan muammo!");
+          throw new Error("O'zgartirib bo'lmadi");
         } else {
-          titleRef.current.value = "";
-          contentRef.current.value = "";
-          categoryRef.current.value = "";
-          imageRef.current.files[0];
+          toast.success("Post updated");
         }
-
-        toast.success("Post Published");
       } catch (error) {
-        toast.error(error.message);
-        console.log(error);
+        toast.warning(error.message);
       }
     }
-    publishPost();
+
+    updatedPost();
   }
 
   return (
     <div className="container mx-auto px-[16px] py-[40px]">
       <div className="mb-[40px]">
         <h2 className="text-[30px] leading-[36px] tracking-[-0.75px] font-[600] text-[#1F2937]">
-          Create New Post
+          Edit Post {id}
         </h2>
         <p className="mt-[8px] text-[14px] leading-[14px] font-[500] text-[#6B7280]">
-          Fill in the details to create a new blog post
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
 
@@ -142,6 +169,15 @@ function CreatePostPage() {
               <option value={4}>Business</option>
               <option value={5}>Lifestyle</option>
             </select>
+
+            <label className="flex font-medium text-2xl items-center gap-[10px] mt-[10px]">
+              isActive{" "}
+              <div
+                onClick={() => setIsActive(!isActive)}
+                ref={isActiveRef}
+                className={`${isActive ? "bg-green-600" : "bg-red-600"} w-[15px] h-[15px] rounded-[50%]`}
+              ></div>
+            </label>
           </div>
 
           <div className="bg-white w-[282.66px] h-[300px] p-[24px] rounded-[12px] shadow-sm">
@@ -188,9 +224,25 @@ function CreatePostPage() {
               Publish Post
             </Btn>
 
-            <Btn style="bordered_btn" width="w-[99px]" height="h-[44px]">
+            <button
+              className="py-3 px-8.5
+    border-2
+    border-gray-200
+    rounded-[12px] 
+    bg-white
+    text-[#000] 
+    font-medium 
+    text-[1.6rem] 
+    leading-[24px] 
+    text-center 
+    cursor-pointer 
+    transition-all 
+    duration-300 
+    hover:opacity-90"
+              onClick={() => navigate("/admin/dashboard")}
+            >
               Cancel
-            </Btn>
+            </button>
           </div>
         </div>
       </form>
@@ -198,4 +250,4 @@ function CreatePostPage() {
   );
 }
 
-export default CreatePostPage;
+export default EditPage;

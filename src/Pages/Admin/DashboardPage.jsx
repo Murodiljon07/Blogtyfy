@@ -30,8 +30,6 @@ function DashboardPage() {
     get_posts();
   }, [false]);
 
-  console.log(posts);
-
   let category = posts.reduce((accumlator, item) => {
     let { category } = item;
     if (!accumlator.includes(category.name)) {

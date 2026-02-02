@@ -1,5 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 /* components */
 import Btn from "./Components/Btn";
@@ -8,6 +10,7 @@ import Btn from "./Components/Btn";
 const BASE_API = import.meta.env.VITE_BASE_API;
 
 function PostsTable({ posts }) {
+  const navigate = useNavigate();
   const tableHeads = ["Title", "Category", "Date", "Status", "Actions"];
   const token = JSON.parse(localStorage.getItem("token"));
 
@@ -46,16 +49,16 @@ function PostsTable({ posts }) {
         </tr>
       </thead>
 
-      <tbody className="block max-h-[300px] overflow-y-auto">
+      <tbody className="block max-h-[400px] overflow-y-auto">
         {posts.map((item, index) => {
           const { id, title, category, created_at, is_active } = item;
 
           return (
             <tr
               key={id}
-              className="table w-full table-fixed border-t border-gray-300 text-[14px]"
+              className="table w-full  table-fixed border-t border-gray-300 text-[14px]"
             >
-              <td className="p-[17px] text-(-color-title) text-[16px] font-medium">
+              <td className="p-[17px] text-(-color-title) text-[16px] font-medium ">
                 {title}
               </td>
 
@@ -77,12 +80,14 @@ function PostsTable({ posts }) {
                 />
               </td>
 
-              <td className="p-[17px] flex gap-[12px]">
+              <td className="p-[17px] flex gap-[12px] ">
                 <Btn
+                  onClick={() => navigate(`/admin/editPost/:${id}`)}
                   children="Edit"
                   width="fit-content"
-                  style="text-[#4346EF]"
+                  style="text-[#4346EF] hover:underline"
                 />
+
                 <Btn
                   onClick={() => deletePost(id)}
                   children="Delete"
