@@ -7,7 +7,7 @@ function AdminLayout() {
   return (
     <section className="flex">
       <AdminBar />
-      <main className="container pt-[32px]">
+      <main className="container pt-[32px] overflow-auto">
         <Outlet />
       </main>
     </section>
